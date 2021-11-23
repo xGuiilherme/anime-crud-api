@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: db_local
+      MYSQL_ROOT_PASSWORD: teste
+    ports:
+      - "3308:3306"
+    expose:
+      - 3308

@@ -1,14 +1,8 @@
 package academy.devdojo.repository;
 
 import academy.devdojo.domain.Anime;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+public interface AnimeRepository extends JpaRepository<Anime, Long> {
 
-@Repository
-public class AnimeRepository {
-
-    List<Anime> listAll() {
-        return null;
-    }
 }
