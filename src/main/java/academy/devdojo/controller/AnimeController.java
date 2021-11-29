@@ -35,6 +35,11 @@ public class AnimeController {
         return ResponseEntity.ok(animeService.findByIdOrdThrowBadRequestException(id));
     }
 
+    @GetMapping(path = "/find")
+    public ResponseEntity<List<Anime>> findByName(@RequestParam String name) {
+        return ResponseEntity.ok(animeService.findByName(name));
+    }
+
     // Os dados são enviados dentro do bady da requisição 'encapsulada junto ao corpo da requisição HTTP'
     @PostMapping
     public ResponseEntity<Anime> save(@RequestBody AnimePostRequestBody animePostRequestBody) {
