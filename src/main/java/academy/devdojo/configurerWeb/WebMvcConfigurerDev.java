@@ -1,4 +1,4 @@
-package academy.devdojo.configurer;
+package academy.devdojo.configurerWeb;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.PageRequest;

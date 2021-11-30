@@ -1,4 +1,4 @@
-package academy.devdojo.client;
+package academy.devdojo.clientRequest;
 
 import academy.devdojo.domain.Anime;
 import lombok.extern.log4j.Log4j2;
