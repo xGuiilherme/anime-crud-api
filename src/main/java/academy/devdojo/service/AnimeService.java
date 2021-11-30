@@ -7,6 +7,8 @@ import academy.devdojo.repository.AnimeRepository;
 import academy.devdojo.requests.AnimePostRequestBody;
 import academy.devdojo.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +22,9 @@ public class AnimeService {
 
     private final AnimeRepository animeRepository;
 
-    public List<Anime> listAll() {
-        return animeRepository.findAll();
+    //Paginaçã: Retorna os valores passados dentro de uma pagina. Flexibilidade para quem esta consumindo a API.
+    public Page<Anime> listAll(Pageable pageable) {
+        return animeRepository.findAll(pageable);
     }
 
     public List<Anime> findByName(String name) {
