@@ -9,10 +9,13 @@ import org.springframework.web.client.RestTemplate;
 public class SpringClient {
 
     public static void main(String[] args) {
-        ResponseEntity<Anime> entity = new RestTemplate().getForEntity(url:"http://localhost:8080/animes/{id}", Anime.class);
+
+        String url;
+
+        ResponseEntity<Anime> entity = new RestTemplate().getForEntity(url = "http://localhost:8080/animes/", Anime.class);
         log.info(entity);
 
-        Anime object = new RestTemplate().getForObject(url;:"http://localhost:8080/animes/2", Anime.class);
-        log.info(object);
+//        Anime object = new RestTemplate().getForObject(url = "http://localhost:8080/animes/2", Anime.class);
+//        log.info(object);
     }
 }

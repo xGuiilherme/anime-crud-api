@@ -3,10 +3,10 @@ services:
   db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
-      MYSQL_DATABASE: db_local
+      MYSQL_DATABASE: dblocalteste
       MYSQL_ROOT_PASSWORD: teste
     ports:
+#      - porta da máquina : porta do container = 15432:5432
       - "3308:3306"
-    expose:
-      - 3308
