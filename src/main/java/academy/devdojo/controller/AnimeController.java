@@ -32,6 +32,12 @@ public class AnimeController {
         return ResponseEntity.ok(animeService.listAll(pageable));
     }
 
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<Anime>> listAll() {
+        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
+        return ResponseEntity.ok(animeService.listAllNoPageable());
+    }
+
     // Os dados são enviados como String anexada a URL 'são visíveis ao usuário'
     @GetMapping(path = "/{id}")
     public ResponseEntity<Anime> findById(@PathVariable long id) {

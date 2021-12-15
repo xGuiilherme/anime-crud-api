@@ -44,6 +44,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 
+        //Se tiver mais de 1 valor retorna esses caras em 1 string só separado por ,
         String filds = fieldErrors.stream().map(FieldError::getField).collect(Collectors.joining(", "));
         String fildsMessage = fieldErrors.stream().map(FieldError::getDefaultMessage).collect(Collectors.joining(
                 ", "));

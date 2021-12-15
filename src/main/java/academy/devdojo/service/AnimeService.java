@@ -25,6 +25,10 @@ public class AnimeService {
         return animeRepository.findAll(pageable);
     }
 
+    public List<Anime> listAllNoPageable() {
+        return animeRepository.findAll();
+    }
+
     public List<Anime> findByName(String name) {
         return animeRepository.findByName(name);
     }
@@ -38,8 +42,8 @@ public class AnimeService {
     public Anime save(AnimePostRequestBody animePostRequestBody) {
         return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
     }
-
     //Ao remover um anime vai verificar se existe e remove,caso ID nao existe vai lançar Exception BAD_REQUEST
+
     public void delete(long id) {
         animeRepository.delete(findByIdOrdThrowBadRequestException(id));
     }
