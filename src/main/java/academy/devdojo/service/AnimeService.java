@@ -42,8 +42,8 @@ public class AnimeService {
     public Anime save(AnimePostRequestBody animePostRequestBody) {
         return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
     }
-    //Ao remover um anime vai verificar se existe e remove,caso ID nao existe vai lançar Exception BAD_REQUEST
 
+    //Ao remover um anime vai verificar se existe e remove,caso ID nao existe vai lançar Exception BAD_REQUEST
     public void delete(long id) {
         animeRepository.delete(findByIdOrdThrowBadRequestException(id));
     }

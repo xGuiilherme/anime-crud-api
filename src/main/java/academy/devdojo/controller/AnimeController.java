@@ -32,6 +32,7 @@ public class AnimeController {
         return ResponseEntity.ok(animeService.listAll(pageable));
     }
 
+    // Novo end-point onde não é paginavel
     @GetMapping(path = "/all")
     public ResponseEntity<List<Anime>> listAll() {
         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
