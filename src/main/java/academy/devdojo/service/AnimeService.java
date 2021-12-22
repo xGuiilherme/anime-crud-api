@@ -40,7 +40,6 @@ public class AnimeService {
 
     @Transactional //Spring nao vai comitar essa transacao enquanto o metodo nao for finalizado.
     public Anime save(AnimePostRequestBody animePostRequestBody) {
-
         return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
     }
 

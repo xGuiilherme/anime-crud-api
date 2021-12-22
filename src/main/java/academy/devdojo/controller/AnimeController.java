@@ -24,6 +24,7 @@ import java.util.List;
 public class AnimeController {
 
     private final DateUtil dateUtil;
+
     private final AnimeService animeService;
 
     @GetMapping
