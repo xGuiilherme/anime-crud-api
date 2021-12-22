@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,11 @@ import java.util.Optional;
 @DisplayName("Tests for anime Repository ")
 @Log4j2
 class AnimeRepositoryTest {
+
+    /*
+        Spring Data JPA Test:
+        Validação de Banco de Dados e como cobrir casos que não são explícitamente definidos.
+     */
 
     @Autowired
     AnimeRepository animeRepository;
@@ -103,8 +109,9 @@ class AnimeRepositoryTest {
         List<Anime> animes = this.animeRepository.findByName(name);
 
         // Verifica se a lista que retornou não é vazia e se contem o animeSaved.
-        Assertions.assertThat(animes).isNotEmpty();
-        Assertions.assertThat(animes).contains(animeSaved);
+        Assertions.assertThat(animes)
+                .isNotEmpty()
+                .contains(animeSaved);
     }
 
     @Test
@@ -112,10 +119,26 @@ class AnimeRepositoryTest {
     void findByName_ReturnsEmptyList_WhenAnimeNotFound() {
 
         // Quando fizer uma busca por Nome ele vai retorna uma lista vazia caso nada seja encontrado.
-        List<Anime> animes = this.animeRepository.findByName("Death Note");
+        List<Anime> animes = this.animeRepository.findByName("DeathNote");
 
-        // Verifica se a lista está vazia,
+        // Verifica se a lista está vazia.
         Assertions.assertThat(animes).isNotEmpty();
+    }
+
+    @Test
+    @DisplayName("Save throw ConstraintViolationException when is empty")
+    void save_ThrowConstraintViolationException_WhenNameIsEmpty() {
+
+        // Cria o anime.
+        Anime anime = new Anime();
+
+        // -> Lambda.
+//        Assertions.assertThatThrownBy(() -> this.animeRepository.save(anime))
+//                .isInstanceOf(ConstraintViolationException.class);
+
+        Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
+                .isThrownBy(() -> this.animeRepository.save(anime))
+                .withMessageContaining("The anime cannot be empty"); // Verifica se essa String está dentro da Mensagem.
     }
 
     private Anime createAnime() {
