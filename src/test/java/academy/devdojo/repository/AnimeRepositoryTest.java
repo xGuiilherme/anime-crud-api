@@ -1,6 +1,7 @@
 package academy.devdojo.repository;
 
 import academy.devdojo.domain.Anime;
+import academy.devdojo.util.AnimeCreator;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -30,10 +31,10 @@ class AnimeRepositoryTest {
     void save_PersistAnime_WhenSuccessful() {
 
         // Cria o anime.
-        Anime animeToBeSaved = createAnime();
+        Anime createAnimeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         // Cria um metodo e Salva o anime em uma variavel local.
-        Anime animeSaved = this.animeRepository.save(animeToBeSaved);
+        Anime animeSaved = this.animeRepository.save(createAnimeToBeSaved);
 
         // Verifica se o OBJ não é Nullo
         Assertions.assertThat(animeSaved).isNotNull();
@@ -42,7 +43,7 @@ class AnimeRepositoryTest {
         Assertions.assertThat(animeSaved.getId()).isNotNull();
 
         // Manda um valor pro BD e verifica se ele foi retornado,se tem um ID,e o valor que foi salvo é igual o que pediu.
-        Assertions.assertThat(animeSaved.getName()).isEqualTo(animeToBeSaved.getName());
+        Assertions.assertThat(animeSaved.getName()).isEqualTo(createAnimeToBeSaved.getName());
     }
 
     @Test
@@ -50,10 +51,10 @@ class AnimeRepositoryTest {
     void save_UpdatesAnime_WhenSuccessful() {
 
         // Cria o anime.
-        Anime animeToBeSaved = createAnime();
+        Anime createAnimeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         // Cria um metodo e Salva o anime em uma variavel local.
-        Anime animeSaved = this.animeRepository.save(animeToBeSaved);
+        Anime animeSaved = this.animeRepository.save(createAnimeToBeSaved);
 
         // Faz Update e Atribui um Nome.
         animeSaved.setName("Overlord");
@@ -76,10 +77,10 @@ class AnimeRepositoryTest {
     void delete_RemovesAnime_WhenSuccessful() {
 
         // Cria o anime.
-        Anime animeToBeSaved = createAnime();
+        Anime createAnimeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         // Cria um metodo e Salva o anime em uma variavel local.
-        Anime animeSaved = this.animeRepository.save(animeToBeSaved);
+        Anime animeSaved = this.animeRepository.save(createAnimeToBeSaved);
 
         // Metodo p/ Deleta o anime.
         this.animeRepository.delete(animeSaved);
@@ -97,10 +98,10 @@ class AnimeRepositoryTest {
     void findByName_ReturnsListOfAnime_WhenSuccessful() {
 
         // Cria o anime.
-        Anime animeToBeSaved = createAnime();
+        Anime createAnimeToBeSaved = AnimeCreator.createAnimeToBeSaved();
 
         // Cria um metodo e Salva o anime em uma variavel local.
-        Anime animeSaved = this.animeRepository.save(animeToBeSaved);
+        Anime animeSaved = this.animeRepository.save(createAnimeToBeSaved);
 
         // Pega o nome do anime.
         String name = animeSaved.getName();
@@ -119,7 +120,7 @@ class AnimeRepositoryTest {
     void findByName_ReturnsEmptyList_WhenAnimeNotFound() {
 
         // Quando fizer uma busca por Nome ele vai retorna uma lista vazia caso nada seja encontrado.
-        List<Anime> animes = this.animeRepository.findByName("DeathNote");
+        List<Anime> animes = this.animeRepository.findByName("Naruto");
 
         // Verifica se a lista está vazia.
         Assertions.assertThat(animes).isNotEmpty();
@@ -139,11 +140,5 @@ class AnimeRepositoryTest {
         Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
                 .isThrownBy(() -> this.animeRepository.save(anime))
                 .withMessageContaining("The anime cannot be empty"); // Verifica se essa String está dentro da Mensagem.
-    }
-
-    private Anime createAnime() {
-        return Anime.builder()
-                .name("Hajime no Ippo")
-                .build();
     }
 }
