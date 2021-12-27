@@ -137,9 +137,12 @@ class AnimeServiceTest {
     @DisplayName("findByIdOrdThrowBadRequestException throws BadRequestException when anime is not found")
     void findByIdOrdThrowBadRequestException_BadRequestException_WhenAnimeIsNotFound() {
 
-        // Quando executar um findById no repositorio passando qual quer Long, ele me retorna um Optional.
+        // Quando executar um findById no repositorio passando qual quer Long, ele me retorna um Optional
         BDDMockito.when(animeRepositoryMock.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.empty());
+
+        // Captura o ID
+        Long expectedId = AnimeCreator.createValidAnime().getId();
 
         Anime anime = animeService.findByIdOrdThrowBadRequestException(1);
 
