@@ -1,6 +1,7 @@
 package academy.devdojo.service;
 
 import academy.devdojo.domain.Anime;
+import academy.devdojo.exception.BadRequestException;
 import academy.devdojo.repository.AnimeRepository;
 import academy.devdojo.util.AnimeCreator;
 import academy.devdojo.util.AnimePostRequestBodyCreator;
@@ -141,16 +142,9 @@ class AnimeServiceTest {
         BDDMockito.when(animeRepositoryMock.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.empty());
 
-        // Captura o ID
-        Long expectedId = AnimeCreator.createValidAnime().getId();
-
-        Anime anime = animeService.findByIdOrdThrowBadRequestException(1);
-
-        // Verifica se o nome é Nulo.
-        Assertions.assertThat(anime).isNotNull();
-
-        // Verifica se o ID é Nulo ou se é o mesmo valor passado.
-        Assertions.assertThat(anime.getId()).isNotNull().isEqualTo(expectedId);
+        // Retonra um BadRequestException, ele vai ser lançado quando executar o metodo.
+        Assertions.assertThatExceptionOfType(BadRequestException.class)
+                .isThrownBy(() -> animeService.findByIdOrdThrowBadRequestException(1));
 
     }
 
