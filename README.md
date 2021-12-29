@@ -1,6 +1,6 @@
 # Projeto Spring Boot Essentials !
 
- Nesse projeto de microservices temos as seguintes lógicas e funcionalidades implementadas entre eles Paginação Web, Exceções, Validações de Campos etc.. Utilizando o Banco de Dados MySQL, Linguagem Java e o Framework Spring.
+ Nesse projeto de microservices temos as seguintes lógicas e funcionalidades implementadas entre eles Paginação Web, Exceções, Validações de Campos, Testes Integrados etc.. Utilizando o Banco de Dados MySQL, Linguagem Java e o Framework Spring.
 
 - Requisição Http.
 - Crud completo com os métodos GET, POST, DELETE e PUT.
