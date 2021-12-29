@@ -1,12 +1,16 @@
 package academy.devdojo.requests;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AnimePostRequestBody {
 
     //Faz a validação dos campos diretamente no Controller sem precisar do If

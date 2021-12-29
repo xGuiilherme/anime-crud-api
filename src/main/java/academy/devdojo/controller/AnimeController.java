@@ -36,12 +36,12 @@ public class AnimeController {
 
     // Os dados são enviados como String anexada a URL 'são visíveis ao usuário'
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Anime> findById(@PathVariable long id) {
+    public ResponseEntity<Anime> findById(@PathVariable long id, Object o) {
         return ResponseEntity.ok(animeService.findByIdOrdThrowBadRequestException(id));
     }
 
     @GetMapping(path = "/find")
-    public ResponseEntity<List<Anime>> findByName(@RequestParam String name) {
+    public ResponseEntity<List<Anime>> findByName(@RequestParam @Valid String name) {
         return ResponseEntity.ok(animeService.findByName(name));
     }
 

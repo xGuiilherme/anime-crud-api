@@ -85,36 +85,30 @@ class AnimeControllerTest {
         // Retorna um ResponseEntity e pega o Body: Ex: Nome que estaria esperando caso esse metodo seja executado com sucesso
         Page<Anime> animePage = animeController.list(null).getBody();
 
-        // Verifica se o animePage não é Nulo.
         Assertions.assertThat(animePage).isNotNull();
 
-        // Verifica se lista capturada está com apenas 1 valor.
         Assertions.assertThat(animePage.toList())
                 .isNotEmpty()
                 .hasSize(1);
 
-        // Verifica o nome da lista captura na posição '0' é o mesmo que foi criado.
         Assertions.assertThat(animePage.toList().get(0).getName()).isEqualTo(expectedName);
 
     }
 
     @Test
     @DisplayName("listALL returns list of anime when successful ")
-    void list_ReturnsListOfAnimes_WhenSuccessful() {
+    void listALL_ReturnsListOfAnimes_WhenSuccessful() {
 
-        // Cira o anime e pega o nome.
         String expectedName = AnimeCreator.createValidAnime().getName();
 
         // Retorna um ResponseEntity e pega o Body listando todos.
         List<Anime> animes = animeController.listAll().getBody();
 
-        // Retorna uma lista com apenas 1 valor.
         Assertions.assertThat(animes)
                 .isNotNull()
                 .isNotEmpty()
                 .hasSize(1);
 
-        // Verifica o nome captura na posição '0' é o mesmo que foi criado.
         Assertions.assertThat(animes.get(0).getName()).isEqualTo(expectedName);
 
     }
@@ -123,15 +117,12 @@ class AnimeControllerTest {
     @DisplayName("findById returns anime when successful ")
     void findById_ReturnsAnime_WhenSuccessful() {
 
-        // Captura o ID
         Long expectedId = AnimeCreator.createValidAnime().getId();
 
-        Anime anime = animeController.findById(1).getBody();
+        Anime anime = animeController.findById(1, null).getBody();
 
-        // Verifica se o nome é Nulo.
         Assertions.assertThat(anime).isNotNull();
 
-        // Verifica se o ID é Nulo ou se é o mesmo valor passado.
         Assertions.assertThat(anime.getId()).isNotNull().isEqualTo(expectedId);
 
     }
@@ -140,19 +131,16 @@ class AnimeControllerTest {
     @DisplayName("findByName returns a list of anime when successful ")
     void findByName_ReturnsListOfAnime_WhenSuccessful() {
 
-        // Cria um nome..
         String expectedName = AnimeCreator.createValidAnime().getName();
 
         // Retorna um ResponseEntity e pega o Body Retornando uma lista com Objetos.
         List<Anime> animes = animeController.findByName("anime").getBody();
 
-        // Verifica o Objeto Captura.
         Assertions.assertThat(animes)
                 .isNotNull()
                 .isNotEmpty()
                 .hasSize(1);
 
-        // Verifica o nome captura na posição '0' é o mesmo que foi criado.
         Assertions.assertThat(animes.get(0).getName()).isEqualTo(expectedName);
 
     }
@@ -168,7 +156,6 @@ class AnimeControllerTest {
         // Retorna um ResponseEntity e pega o Body Retornando uma lista com Objetos.
         List<Anime> animes = animeController.findByName("anime").getBody();
 
-        // Verifica o Objeto Capturado.
         Assertions.assertThat(animes)
                 .isNotNull()
                 .isEmpty();
@@ -179,10 +166,8 @@ class AnimeControllerTest {
     @DisplayName("save returns anime when successful ")
     void save_ReturnsAnime_WhenSuccessful() {
 
-        // Captura e Salva o ID.
         Anime anime = animeController.save(AnimePostRequestBodyCreator.createAnimePostRequestBody()).getBody();
 
-        // Verifica se é Nulo ou se é igual o valor passado.
         Assertions.assertThat(anime).isNotNull().isEqualTo(AnimeCreator.createValidAnime());
 
     }
@@ -197,7 +182,6 @@ class AnimeControllerTest {
 
         ResponseEntity<Void> entity = animeController.replace(AnimePutRequestBodyCreator.createAnimePutRequestBody());
 
-        // Verifica se a entidade não é Nulo.
         Assertions.assertThat(entity).isNotNull();
 
         // Retorna Status NO_CONTENT.
@@ -215,10 +199,8 @@ class AnimeControllerTest {
 
         ResponseEntity<Void> entity = animeController.delete(1);
 
-        // Verifica se a entidade não é Nulo.
         Assertions.assertThat(entity).isNotNull();
 
-        // Retorna Status NO_CONTENT.
         Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
 
     }

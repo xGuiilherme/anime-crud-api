@@ -90,7 +90,6 @@ class AnimeServiceTest {
         Assertions.assertThat(animePage.toList())
                 .isNotEmpty()
                 .hasSize(1);
-
         // Verifica o nome da lista captura na posição '0' é o mesmo que foi criado.
         Assertions.assertThat(animePage.toList().get(0).getName()).isEqualTo(expectedName);
 
