@@ -1,0 +1,85 @@
+
+SET @@global.time_zone = '+3:00';
+
+------------
+
+Dependencias do projeto:
+
+Spring Boot, Spring Data, JPA, Spring Secutiry, docker.
+
+------------
+
+Atalhos Intellij IDE:
+
+ctrl + alt + L auto indent shortcut
+
+ctrl + alt + O remove imports nao utilizados
+
+alt + shift + B gera o builder
+
+ctrl + / comenta
+
+ctrl + shift + E navegar pelos arquivos
+
+ctrl + alt + v cria variavel local
+
+alt + enter cria variavel local
+
+------------
+
+Significados de algumas anotações.
+
+@Entity: faz uma ligacao entre a classe que leva essa notacao e o banco de dados, criando uma tabela no banco com esse mesmo nome e com campos de acordo
+com as variaveis definidas nesta classe.
+
+@Controller: associada com classes que possuem métodos que processam requests numa aplicação web. Meu comentário: É geralmente a classe que tem o RequestMapping
+e tal.
+
+@RestController: igual o controller, mas retorna um JSON, entao é melhor usar @RestController.
+
+@Component: é um estereótipo genérico para qualquer componente gerenciado pelo Spring; Meu comentário: Só fala pro spring que essa classe vai ser usada com ele.
+
+@Service: faz anotações de classes na camada de serviço; Meu comentário: sei lá o que é camada de serviço.
+
+@Repository: anota classes na camada de persistência, que atuará como um repositório de banco de dados, além de capturar exceções específicas de persistência e
+repeti-las novamente como uma das exceções não verificadas e unificadas do Spring. Meu comentário: Tem que usar isso no DAO.
+
+@SpringBootApplication: é usada para marcar uma classe de configuração que declara um ou mais métodos @Bean e também dispara a autoconfiguração e a varredura de
+componentes, é o mesmo que usar @Configuration, @EnableAutoConfigation e @ComponentScan.
+
+@MappedSuperclass: informa que a classe nao é pra ser mapeada no banco de dados, que só é uma classe de negócio para ser extendida.
+
+@ControllerAdvice: permite que você lide com exceções em todo o aplicativo, não apenas para um controlador individual.
+
+@Transactional: faz um rollback no banco de dados quando dentro de um método voce faz alguma alteracao no banco e esse método posteriormente quebra por
+algum motivo que nao foi na hora de modificar o banco, retornando um erro. Como o método quebrou (lançou throw), nao podemos persistir as alteracoes no banco,
+entao esse Transactional anotado no método desfaz as alteracoes. Pra isso, precisa usar banco que suporta Transactional. Pra criar tabelas, tem que setar no
+applcation.properties spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect.
+
+@NotEmpty: usado no model pra nao permitir campos vazios, Além de NotEmpty, existem varios outros validators.
+
+@Valid: normalmente se usa no endpoint que está recebendo um parâmetro, para validar se o parametro é valido com base no model anotado com tag @NotEmpty.
+
+---------------
+
+Tratamento de exceção:
+
+Na classe ResponseEntityExceptionHanler.class, do Spring, ele faz por default o tratamento da grande maioria das exceptions lançadas pelo HTTP
+Caso queira sobrescrever algum tratamento em específico, é só extender essa classe num ExceptionHandler (exemplo do handleArgumentNotValidException do
+RestExceptionHandler.java.
+
+Importante: Nao é possivel usar mais de um @ExceptionHandler quando feito extends no ResponseEntityExceptionHandler, pois irá dar problemas.
+
+---------------
+
+PADRÕES RESTful
+
+Usar endpoints no plural ("student" vira "students")
+
+sempre que for um get, deixar na raiz do endpoint.
+
+Exemplo: se quer estudantes, nao precisa fazer um students/list. Só deixar o get no students mesmo.
+
+Para tratar um erro geral, extender ResponseEntityExceptionHandler e sobrescrever handleExceptionInternal.
+
+------------
