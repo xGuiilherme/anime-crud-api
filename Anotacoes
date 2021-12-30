@@ -82,4 +82,4 @@ Exemplo: se quer estudantes, nao precisa fazer um students/list. Só deixar o ge
 
 Para tratar um erro geral, extender ResponseEntityExceptionHandler e sobrescrever handleExceptionInternal.
 
-------------
+-------------
