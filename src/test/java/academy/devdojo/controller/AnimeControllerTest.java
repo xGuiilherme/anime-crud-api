@@ -119,7 +119,7 @@ class AnimeControllerTest {
 
         Long expectedId = AnimeCreator.createValidAnime().getId();
 
-        Anime anime = animeController.findById(1, null).getBody();
+        Anime anime = animeController.findById(0).getBody();
 
         Assertions.assertThat(anime).isNotNull();
 

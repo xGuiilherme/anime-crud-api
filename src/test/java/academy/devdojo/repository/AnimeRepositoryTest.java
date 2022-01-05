@@ -130,7 +130,6 @@ class AnimeRepositoryTest {
     @DisplayName("Save throw ConstraintViolationException when is empty")
     void save_ThrowConstraintViolationException_WhenNameIsEmpty() {
 
-        // Cria o anime.
         Anime anime = new Anime();
 
         // -> Lambda.
