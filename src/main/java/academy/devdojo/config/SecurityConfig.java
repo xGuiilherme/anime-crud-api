@@ -15,7 +15,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Todas as requisição que fizer(das url que está no controller) vão precisar passar por uma autenticação básica.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+
+        // withHttpOnly:As aplicações de frontend(JS,React,Anguler) não vão conseguir pegar o valor desse Cookie, quando
+        // eles fazem uma requisição Post eles precisam passar esse Cookie tambem quando o csrf está habilitado.
+        http.csrf().disable()
+//                csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+                .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -31,12 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Cria um Usuario e Password em memória e vai ficar ativo durante o ciclo de vida da aplicação até reiniciar
         // Quando reiniciado vai criar novamente com a mesma senha e mesmo usuario.
         auth.inMemoryAuthentication()
-                .withUser("Guilherme")
+                .withUser("Guilherme2")
                 .password(passwordEncoder.encode("academy"))
                 .roles("USER", "ADMIN")
                 .and()
-                .withUser("devdojo")
-                .password(passwordEncoder.encode("academy"))
+                .withUser("DevCredenc")
+                .password(passwordEncoder.encode("12345678"))
                 .roles("USER");
     }
 }
