@@ -16,3 +16,13 @@ logging:
     org:
       hibernate:
         SQL: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+  metrics:
+    export:
+      atlas:
+        enabled: fals
