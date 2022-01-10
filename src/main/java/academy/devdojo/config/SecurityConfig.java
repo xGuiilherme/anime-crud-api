@@ -36,6 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
 //                csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
                 .authorizeRequests()
+                .antMatchers("/animes/admin/**").hasRole("ADMIN")
+                .antMatchers("/animes/**").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -53,11 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Cria um Usuario e Password em memória e vai ficar ativo durante o ciclo de vida da aplicação até reiniciar
         // Quando reiniciado vai criar novamente com a mesma senha e mesmo usuario.
         auth.inMemoryAuthentication()
-                .withUser("guilherme2")
+                .withUser("guilherme")
                 .password(passwordEncoder.encode("academy"))
                 .roles("USER", "ADMIN")
                 .and()
-                .withUser("devcred2")
+                .withUser("devcred")
                 .password(passwordEncoder.encode("academy"))
                 .roles("USER");
 

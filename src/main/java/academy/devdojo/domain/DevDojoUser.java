@@ -28,9 +28,8 @@ public class DevDojoUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "The anime cannot be empty")
+    @NotEmpty(message = "The user's name cannot be empty")
     private String name;
-
     private String username;
     private String password;
     private String authorities;
@@ -42,14 +41,12 @@ public class DevDojoUser implements UserDetails {
                 .collect(Collectors.toList());
     }
 
-    @Override
     public String getPassword() {
-        return this.getPassword();
+        return this.password;
     }
 
-    @Override
     public String getUsername() {
-        return this.getUsername();
+        return this.username;
     }
 
     @Override
@@ -71,4 +68,5 @@ public class DevDojoUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
