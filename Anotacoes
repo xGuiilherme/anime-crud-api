@@ -1,31 +1,24 @@
 
 SET @@global.time_zone = '+3:00';
 
-------------
+------------------------------------------------------------
+Documentação Swagger OpenAPI da Aplicação:
+
+http://localhost:8080/v3/api-docs
+
+Com esse endpoint ele já cria uma especificação Json atravez dessa especificação outras pessoal podem gerar um codigo diretamente em suas IDEs.
+
+http://localhost:8080/swagger-ui/index.html#/
+
+Endpoint para exibir a documentação Swagger OpenAPI.
+
+------------------------------------------------------------
 
 Dependencias do projeto:
 
-Spring Boot, Spring Data, JPA, Spring Secutiry, docker.
+Spring Boot, Spring Data, JPA, Spring Secutiry, Docker etc.
 
-------------
-
-Atalhos Intellij IDE:
-
-ctrl + alt + L auto indent shortcut
-
-ctrl + alt + O remove imports nao utilizados
-
-alt + shift + B gera o builder
-
-ctrl + / comenta
-
-ctrl + shift + E navegar pelos arquivos
-
-ctrl + alt + v cria variavel local
-
-alt + enter cria variavel local
-
-------------
+------------------------------------------------------------
 
 Significados de algumas anotações.
 
@@ -60,7 +53,7 @@ applcation.properties spring.jpa.properties.hibernate.dialect = org.hibernate.di
 
 @Valid: normalmente se usa no endpoint que está recebendo um parâmetro, para validar se o parametro é valido com base no model anotado com tag @NotEmpty.
 
----------------
+------------------------------------------------------------
 
 Tratamento de exceção:
 
@@ -70,16 +63,4 @@ RestExceptionHandler.java.
 
 Importante: Nao é possivel usar mais de um @ExceptionHandler quando feito extends no ResponseEntityExceptionHandler, pois irá dar problemas.
 
----------------
-
-PADRÕES RESTful
-
-Usar endpoints no plural ("student" vira "students")
-
-sempre que for um get, deixar na raiz do endpoint.
-
-Exemplo: se quer estudantes, nao precisa fazer um students/list. Só deixar o get no students mesmo.
-
-Para tratar um erro geral, extender ResponseEntityExceptionHandler e sobrescrever handleExceptionInternal.
-
--------------
+------------------------------------------------------------
