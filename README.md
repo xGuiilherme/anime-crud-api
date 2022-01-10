@@ -1,6 +1,6 @@
 # Projeto Spring Boot Essentials !
 
-  Esse repositório contém todo o código desenvolvido durante o curso Spring Boot 2 Essentials, desenvolvido pelo canal DevDojo, provê um overview pelos principais fundamentos do framework Spring Boot. você pode encontrar ele [clicando aqui](https://www.youtube.com/watch?v=bCzsSXE4Jzg&list=PL62G310vn6nFBIxp6ZwGnm8xMcGE3VA5H&index=1).
+  Esse repositório contém todo o código desenvolvido por mim durante o curso Spring Boot 2 Essentials, desenvolvido pelo canal DevDojo, provê um overview pelos principais fundamentos do framework Spring Boot. você pode encontrar ele [clicando aqui](https://www.youtube.com/watch?v=bCzsSXE4Jzg&list=PL62G310vn6nFBIxp6ZwGnm8xMcGE3VA5H&index=1).
   
 # Versões em que o projeto está rodando !
 
