@@ -25,4 +25,6 @@
 - Spring Security - Autenticação - 'Pegar um Usuario Que Está Autenticado na Requisição'.
 - Spring Security - Autenticação Com Usuário no Banco de Dados.
 - Spring Security - Proteção de URL com Antmatcher.
+- Spring Boot Actuator - Monitoramento da aplicação com prometheus
+- Monitorando métricas com gráficos no Grafana.
 - Documentação com SpringDoc OpenAPI,  etc..
