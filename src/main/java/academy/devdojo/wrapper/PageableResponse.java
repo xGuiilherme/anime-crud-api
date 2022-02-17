@@ -20,12 +20,13 @@ import org.springframework.data.domain.PageRequest;
 @Getter
 @Setter
 public class PageableResponse<T> extends PageImpl<T> {
+
     private boolean first;
     private boolean last;
     private int totalPages;
     private int numberOfElements;
 
-    @JsonCreator(mode = Mode.PROPERTIES)
+    @JsonCreator(mode = Mode.PROPERTIES )
     public PageableResponse(@JsonProperty("content") List<T> content,
                             @JsonProperty("number") int number,
                             @JsonProperty("size") int size,

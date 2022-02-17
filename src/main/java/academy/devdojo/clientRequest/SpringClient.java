@@ -33,9 +33,9 @@ public class SpringClient {
                 HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
         log.info(exchange.getBody());
 
-        Anime bleach = Anime.builder().name("bleach").build();
-        Anime bleachSaved = new RestTemplate().postForObject("http://localhost:8080/animes/", bleach, Anime.class);
-        log.info("saved anime {}", bleachSaved);
+//        Anime bleach = Anime.builder().name("bleach").build();
+//        Anime bleachSaved = new RestTemplate().postForObject("http://localhost:8080/animes/", bleach, Anime.class);
+//        log.info("saved anime {}", bleachSaved);
 
         // Exchange: Primeiro passa a URL, Metodo:POST Envia um OBJ,
         Anime kindom = Anime.builder().name("kindom").build();
@@ -45,23 +45,23 @@ public class SpringClient {
                 Anime.class);
         log.info("saved anime {}", kindomSaved);
 
-//        Anime animeToBeUpdated = kindomSaved.getBody();
-//        animeToBeUpdated.setName("kindom 2");
-//
-//        ResponseEntity<Void> kindomUpdated = new RestTemplate().exchange("http://localhost:8080/animes/",
-//                    HttpMethod.PUT,
-//                new HttpEntity<>(animeToBeUpdated, createJsonHeader()),
-//                Void.class);
-//
-//        log.info("kindomUpdated");
+        Anime animeToBeUpdated = kindomSaved.getBody();
+        animeToBeUpdated.setName("kindom 2");
 
-//        ResponseEntity<Void> kindomDelete = new RestTemplate().exchange("http://localhost:8080/animes/{id}",
-//                HttpMethod.DELETE,
-//                null,
-//                Void.class,
-//                animeToBeUpdated.getId());
-//
-//        log.info("kindomDelete");
+        ResponseEntity<Void> kindomUpdated = new RestTemplate().exchange("http://localhost:8080/animes/",
+                    HttpMethod.PUT,
+                new HttpEntity<>(animeToBeUpdated, createJsonHeader()),
+                Void.class);
+
+        log.info(kindomUpdated);
+
+        ResponseEntity<Void> kindomDelete = new RestTemplate().exchange("http://localhost:8080/animes/{id}",
+                HttpMethod.DELETE,
+                null,
+                Void.class,
+                animeToBeUpdated.getId());
+
+        log.info(kindomDelete);
     }
 
     private static HttpHeaders createJsonHeader() {

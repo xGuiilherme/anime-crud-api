@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 public class AnimePostRequestBody {
 
     //Faz a validação dos campos diretamente no Controller sem precisar do If
-    @NotEmpty(message = "The anime cannot be empty")
-    @Schema(description = "This is the Anime's name", example = "Tensei Shitara Slime Datta Ken", required = true)
+    @NotEmpty(message = "The anime name cannot be empty")
+    @Schema(description = "This is the Anime's name", example = "Tensei Shittara Slime Datta Ken", required = true)
     private String name;
 }

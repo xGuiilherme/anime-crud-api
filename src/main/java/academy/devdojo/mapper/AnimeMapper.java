@@ -18,5 +18,5 @@ public abstract class AnimeMapper {
     @Autowired
     public abstract Anime toAnime(AnimePostRequestBody animePostRequestBody);
 
-    public abstract Anime toAnime(AnimePutRequestBody animePutRequestBody);
+    public abstract Anime toAnime(AnimePutRequestBody animePostRequestBody);
 }

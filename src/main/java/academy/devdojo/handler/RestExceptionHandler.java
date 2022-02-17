@@ -45,8 +45,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 
         //Se tiver mais de 1 valor retorna esses caras em 1 string só separado por ,
-        String filds = fieldErrors.stream().map(FieldError::getField).collect(Collectors.joining(", "));
-        String fildsMessage = fieldErrors.stream().map(FieldError::getDefaultMessage).collect(Collectors.joining(
+        String fields = fieldErrors.stream().map(FieldError::getField).collect(Collectors.joining(", "));
+        String fieldsMessage = fieldErrors.stream().map(FieldError::getDefaultMessage).collect(Collectors.joining(
                 ", "));
 
         return new ResponseEntity<>(
@@ -56,8 +56,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                         .title("Bad Request Exception, Invalid Fields")
                         .details("Check the field(s) error")
                         .developerMessage(exception.getClass().getName())
-                        .fields(filds)
-                        .fieldsMessage(fildsMessage)
+                        .fields(fields)
+                        .fieldsMessage(fieldsMessage)
                         .build(), HttpStatus.NOT_FOUND);
     }
 

@@ -40,21 +40,21 @@ public class AnimeController {
     @GetMapping(path = "/all")
     @Operation(summary = "List all animes", description = "Returns a list of all saved anime")
     public ResponseEntity<List<Anime>> listAll() {
-        return ResponseEntity.ok(animeService.listAllNoPageable());
+        return ResponseEntity.ok(animeService.listAllNonPageable());
     }
 
     // Os dados são enviados como String anexada a URL 'são visíveis ao usuário'
     @GetMapping(path = "/{id}")
     @Operation(summary = "Search by id", description = "Returns by id of anime")
     public ResponseEntity<Anime> findById(@PathVariable long id) {
-        return ResponseEntity.ok(animeService.findByIdOrdThrowBadRequestException(id));
+        return ResponseEntity.ok(animeService.findByIdOrThrowBadRequestException(id));
     }
 
     @GetMapping(path = "by-id/{id}")
-    public ResponseEntity<Anime> findByIdAutenticationPrincipal(@PathVariable long id,
+    public ResponseEntity<Anime> findByIdAuthenticationPrincipal(@PathVariable long id,
                                                                 @AuthenticationPrincipal UserDetails userDetails) {
         log.info(userDetails);
-        return ResponseEntity.ok(animeService.findByIdOrdThrowBadRequestException(id));
+        return ResponseEntity.ok(animeService.findByIdOrThrowBadRequestException(id));
     }
 
     @GetMapping(path = "/find")
@@ -72,8 +72,7 @@ public class AnimeController {
     @DeleteMapping(path = "/admin/{id}")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Successful Operation"),
-            @ApiResponse(responseCode = "400", description = "When Anime Does Not Exist in The Database"),
-    })
+            @ApiResponse(responseCode = "400", description = "When Anime Does Not Exist in The Database")})
     public ResponseEntity<Void> delete(@PathVariable long id) {
         animeService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

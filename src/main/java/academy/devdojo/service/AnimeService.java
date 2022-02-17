@@ -25,7 +25,7 @@ public class AnimeService {
         return animeRepository.findAll(pageable);
     }
 
-    public List<Anime> listAllNoPageable() {
+    public List<Anime> listAllNonPageable() {
         return animeRepository.findAll();
     }
 
@@ -33,7 +33,7 @@ public class AnimeService {
         return animeRepository.findByName(name);
     }
 
-    public Anime findByIdOrdThrowBadRequestException(long id) {
+    public Anime findByIdOrThrowBadRequestException(long id) {
         return animeRepository.findById(id)
                 .orElseThrow(() -> new BadRequestException("Anime not Found"));
     }
@@ -45,11 +45,11 @@ public class AnimeService {
 
     //Ao remover um anime vai verificar se existe e remove,caso ID nao existe vai lançar Exception BAD_REQUEST
     public void delete(long id) {
-        animeRepository.delete(findByIdOrdThrowBadRequestException(id));
+        animeRepository.delete(findByIdOrThrowBadRequestException(id));
     }
 
     public void replace(AnimePutRequestBody animePutRequestBody) {
-        Anime savedAnime = findByIdOrdThrowBadRequestException(animePutRequestBody.getId());
+        Anime savedAnime = findByIdOrThrowBadRequestException(animePutRequestBody.getId());
         Anime anime = AnimeMapper.INSTANCE.toAnime(animePutRequestBody);
         anime.setId(savedAnime.getId());
         animeRepository.save(anime);

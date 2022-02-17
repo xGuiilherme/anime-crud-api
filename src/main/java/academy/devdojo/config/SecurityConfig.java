@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        log.info("Password encoder {}", passwordEncoder.encode("academy"));
+        log.info("Password encoded {}", passwordEncoder.encode("academy"));
 
         // Cria um Usuario e Password em memória e vai ficar ativo durante o ciclo de vida da aplicação até reiniciar
         // Quando reiniciado vai criar novamente com a mesma senha e mesmo usuario.

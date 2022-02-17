@@ -103,7 +103,7 @@ class AnimeServiceTest {
         String expectedName = AnimeCreator.createValidAnime().getName();
 
         // Retorna um ResponseEntity e pega o Body listando todos.
-        List<Anime> animes = animeService.listAllNoPageable();
+        List<Anime> animes = animeService.listAllNonPageable();
 
         // Retorna uma lista com apenas 1 valor.
         Assertions.assertThat(animes)
@@ -123,7 +123,7 @@ class AnimeServiceTest {
         // Captura o ID
         Long expectedId = AnimeCreator.createValidAnime().getId();
 
-        Anime anime = animeService.findByIdOrdThrowBadRequestException(1);
+        Anime anime = animeService.findByIdOrThrowBadRequestException(1);
 
         // Verifica se o nome é Nulo.
         Assertions.assertThat(anime).isNotNull();
@@ -143,7 +143,7 @@ class AnimeServiceTest {
 
         // Retonra um BadRequestException, ele vai ser lançado quando executar o metodo.
         Assertions.assertThatExceptionOfType(BadRequestException.class)
-                .isThrownBy(() -> animeService.findByIdOrdThrowBadRequestException(1));
+                .isThrownBy(() -> animeService.findByIdOrThrowBadRequestException(1));
 
     }
 
