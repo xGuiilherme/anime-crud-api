@@ -6,7 +6,7 @@ spring:
   application:
     name: domain
   datasource:
-    url: jdbc:mysql://localhost:3308/anime?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3308/anime?createDatabaseIfNotExist=true
     username: root
     password: teste
   jpa:
