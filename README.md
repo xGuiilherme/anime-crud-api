@@ -38,7 +38,6 @@ As seguintes lógicas e funcionalidades foram implementadas:
 | Método | Endpoint | Função |
 |--------|----------|--------|
 | GET    | /        | Retorna uma lista de todos os animes cadastrados de forma paginada. |
-| GET   | /all        | Retorna uma lista de todos os animes sem paginação. |
 | GET    | /{id}    | Retorna informações sobre o anime com o ID especificado. |
 | GET    | /find    | Retorna informações sobre o anime com o NOME especificado. |
 | POST | /    | Cadastra um novo anime. |
