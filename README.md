@@ -43,7 +43,3 @@ As seguintes lógicas e funcionalidades foram implementadas:
 | POST | /    | Cadastra um novo anime. |
 | DELTE | /admin/{id} | Exclui o anime com o ID especificado somente com autenticação de admin. |
 | PUT    | /    | Cria ou Atualiza as informações do anime. |
-
-# Como contribuir?
-
-Se você encontrar algum erro ou tiver alguma sugestão para melhorar este repositório, sinta-se à vontade para abrir uma issue ou pull request. Agradeço a sua contribuição!
