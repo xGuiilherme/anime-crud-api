@@ -33,7 +33,11 @@ As seguintes lógicas e funcionalidades foram implementadas:
 - Monitorando métricas com gráficos no Grafana.
 - Documentação com SpringDoc OpenAPI.
 
-## Quadro de Requisições HTTP
+## Requisitos
+1. Java 11
+2. Docker ou MySQL rodando nativamente
+
+## Requisições HTTP
 
 | Método | Endpoint | Função |
 |--------|----------|--------|
