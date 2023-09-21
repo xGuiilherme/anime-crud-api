@@ -4,7 +4,7 @@ Esse repositório contém todo o código desenvolvido por mim durante o curso Sp
 
 ## Funcionalidades Implementadas
 
-Nesse projeto de microservices fizemos um CRUD completo utilizando todos os protocolos HTTP com inserção dos dados no MySQL, junto com todas as validações e exceções personalizadas dos campos e IDs, abrangemos também toda a parte de documentação e monitoramento de métricas da aplicação utilizando o Grafana, Actuator e Swagger.
+Nesse projeto fizemos um CRUD completo utilizando todos os protocolos HTTP com inserção dos dados no MySQL, junto com todas as validações e exceções personalizadas dos campos e IDs, abrangemos também toda a parte de documentação e monitoramento de métricas da aplicação utilizando o Grafana, Actuator e Swagger.
 
 As seguintes lógicas e funcionalidades foram implementadas:
 
