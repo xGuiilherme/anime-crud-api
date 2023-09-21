@@ -1,37 +1,17 @@
 ## Projeto Spring Boot Essentials !
 
-Esse repositório contém todo o código desenvolvido por mim durante o curso Spring Boot 2 Essentials, desenvolvido pelo canal DevDojo, provê um overview completo pelos principais fundamentos do Framework Spring, você pode encontrar ele [clicando aqui](https://www.youtube.com/watch?v=bCzsSXE4Jzg&list=PL62G310vn6nFBIxp6ZwGnm8xMcGE3VA5H&index=1).
+Bem-vindo à API de Gerenciamento de Animes, desenvolvida como parte do projeto Spring Boot 2 Essentials. Esta API provê um overview completo pelos principais fundamentos do Framework Spring e oferece funcionalidades completas de CRUD para gerenciar informações sobre animes. Você pode encontrar mais sobre [clicando aqui](https://www.youtube.com/watch?v=bCzsSXE4Jzg&list=PL62G310vn6nFBIxp6ZwGnm8xMcGE3VA5H&index=1). Aqui estão as principais características e funcionalidades implementadas:
 
 ## Funcionalidades Implementadas
 
-Nesse projeto fizemos um CRUD completo utilizando todos os protocolos HTTP com inserção dos dados no MySQL, junto com todas as validações e exceções personalizadas dos campos e IDs, abrangemos também toda a parte de documentação e monitoramento de métricas da aplicação utilizando o Grafana, Actuator e Swagger.
+Como parte do projeto fizemos um CRUD completo utilizando todos os protocolos HTTP com inserção dos dados no H2 e MySQL, junto com todas as validações e exceções personalizadas dos campos e IDs, abrangemos também toda a parte de documentação e monitoramento de métricas da aplicação utilizando o Grafana, Actuator e Swagger.
 
-As seguintes lógicas e funcionalidades foram implementadas:
-
-- Requisição Http.
-- Crud completo com os métodos GET, POST, DELETE e PUT.
-- Spring Data JPA, MVC.
-- Framework de Mapeamento MapStruct.
-- Request Params.
-- Exceções Customizadas / Handler Global e Transações.
-- Validação de Campos / Handler para Validação de Campos.
-- Sobrescrevendo handler do Spring.
-- Paginação / WebMVC Configurer.
-- Sporting e Log SQL no Console.
-- RestTemplate getForObject e getForEntity.
-- RestTemplate Exchange.
-- RestTemplate com métodos POST, PUT e Delete.
-- Spring Data JPA - Test.
-- Unit Tests e Teste de Integração.
-- Maven Profile Para Teste de Integração.
-- Spring Security - CSRF Token.
-- Spring Security - Segurança a nível de métodos com PreAuthori.
-- Spring Security - Autenticação - 'Pegar um Usuario Que Está Autenticado na Requisição'.
-- Spring Security - Autenticação Com Usuário no Banco de Dados.
-- Spring Security - Proteção de URL com Antmatcher.
-- Spring Boot Actuator - Monitoramento da aplicação com prometheus
-- Monitorando métricas com gráficos no Grafana.
-- Documentação com SpringDoc OpenAPI.
+- **Requisição HTTP:** A API suporta todos os protocolos HTTP necessários para operações CRUD, incluindo GET, POST, DELETE e PUT.
+- **Spring Data JPA e MVC:** Utilizamos o Spring Data JPA para interagir com o banco de dados MySQL e o Spring MVC para criar endpoints RESTful.
+- **Framework de Mapeamento MapStruct:** Implementamos o mapeamento de objetos com o MapStruct para facilitar a transformação de dados.
+- **Validação de Campos e IDs:** Todas as entradas são validadas, e exceções personalizadas são tratadas de forma apropriada com handler global.
+- **Testes Unitários e Testes de Integração:** Realizamos testes unitários abrangentes para verificar a funcionalidade de componentes individuais do aplicativo, garantindo que eles funcionem conforme o esperado.
+- **Documentação e Monitoramento:** Implementamos documentação usando o Swagger e monitoramento de métricas com Grafana e Spring Boot Actuator.
 
 ## Requisitos
 1. Java 11
@@ -41,9 +21,9 @@ As seguintes lógicas e funcionalidades foram implementadas:
 
 | Método | Endpoint | Função |
 |--------|----------|--------|
-| GET    | /        | Retorna uma lista de todos os animes cadastrados de forma paginada. |
-| GET    | /{id}    | Retorna informações sobre o anime com o ID especificado. |
-| GET    | /find    | Retorna informações sobre o anime com o NOME especificado. |
-| POST | /    | Cadastra um novo anime. |
-| DELTE | /admin/{id} | Exclui o anime com o ID especificado somente com autenticação de admin. |
+| GET    | /        | Retorna uma lista paginada de todos os animes cadastrados |
+| GET    | /{id}    | Retorna informações sobre o anime com o ID especificado |
+| GET    | /find    | Retorna informações sobre o anime com o NOME especificado |
+| POST | /    | Cadastra um novo anime |
+| DELTE | /admin/{id} | Exclui o anime com o ID especificado (requer autenticação de administrador) |
 | PUT    | /    | Cria ou Atualiza as informações do anime. |
